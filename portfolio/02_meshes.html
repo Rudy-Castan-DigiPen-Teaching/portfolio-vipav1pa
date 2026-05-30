@@ -11,7 +11,7 @@
     <!-- Help auto scale for desktop & mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>STUDENT TODO Website</title>
+    <title>Procedural Meshes - Seungmin Hong</title>
 
     <!-- Normalize the difference across browsers  https://necolas.github.io/normalize.css/ -->
     <link rel="stylesheet" href="../external/normalize.css">
@@ -32,8 +32,7 @@
 <body>
     <header>
         <div class="logo">
-            <!-- alt text can be blank since the logo is purely decorative and putting something like logo isn't actually helpful -->
-            <img src="../img/cout.jpg" alt="">
+            <span style="font-weight: bold; font-family: 'Source Code Pro', monospace;">cout >> Seungmin Hong</span>
         </div>
         <button class="nav-toggle" aria-label="toggle navigation">
             <span class="hamburger"></span>
@@ -61,9 +60,9 @@
 
     <!-- Introduction -->
     <section class="intro">
-        <!-- TODO put the name of the assignment here -->
+
         <h1 class="section__title section__title--intro">
-            Project <strong>Procedural Geometric Modeling</strong>
+            Project <strong>Procedural Meshes</strong>
         </h1>
         <p class="section__subtitle section__subtitle--intro">3D Graphics</p>
         <img src="../img/portfolio_thumbnails/02_meshes.jpg" alt="a picture of this portfolio item" class="intro__img">
@@ -71,39 +70,61 @@
 
     <div class="portfolio-item-individual">
         <h2>Project Overview</h2>
-        <p>Provide a brief description of the project, its purpose, and what you aimed to achieve.</p>
+        <p>
+            The objective of this project was to implement procedural mesh generation algorithms for 3D geometric
+            primitives and integrate them into an interactive graphics demo using OpenGL 3.3 and WebGL 2.
+            This procedural generation framework forms the basis for dynamic 3D asset generation in a custom graphics
+            engine.
+        </p>
 
         <h2>Tasks Completed</h2>
         <ul>
-            <li>Describe the tasks you completed for this project.</li>
-            <li>Be specific about your contributions and the technologies used.</li>
+            <li>Added new source files (<code>D02ProceduralMeshes</code>, <code>Material</code>, <code>Mesh</code>) and
+                updated <code>CMakeLists.txt</code>.</li>
+            <li>Registered the new demo in <code>DemosFactory</code> with the display name "Procedural Meshes" and short
+                name "meshes" using a lambda function.</li>
+            <li>Implemented core mathematical algorithms in <code>Mesh.cpp</code>, specifically
+                <code>build_index_buffer()</code> and <code>create_plane_vertices()</code>.
+            </li>
+            <li>Correctly implemented procedural generation logic for 6 key 3D primitives: Plane, Cube, Sphere, Torus,
+                Cylinder, and Cone.</li>
+            <li>Utilized <code>GL::</code> wrappers for all OpenGL calls and adhered to strict coding standards,
+                including removing all TODOs and adding proper header comments (Author: Seungmin Hong, Course: CS250,
+                Term: Spring 2026, DigiPen Copyright).</li>
         </ul>
 
         <h2>Reflection</h2>
-        <p>Reflect on the project, discussing any challenges faced, solutions implemented, and what you learned from the
-            experience.</p>
+        <p>
+            The main challenges in this project revolved around the mathematical complexity of mapping 2D UV coordinates
+            to 3D spaces for curved shapes like spheres.
+            It was a valuable structural lesson to manage a multi-demo architecture within a single engine ecosystem,
+            adapting the codebase seamlessly from the previous single-quad setup.
+            On a personal level, there was an incredibly rewarding feeling in seeing raw mathematical formulas transform
+            into perfectly shaded 3D geometric shapes spinning smoothly on both desktop and web-release builds.
+        </p>
     </div>
 
     <div class="portfolio-item-individual">
-        <h2>Demo</h2>
-        <iframe id="demo" src="../webgl/D02ProceduralMeshes/graphics_fun.html?start=meshes" tabindex="-1"></iframe>
+        <h2>Live Demo</h2>
+        <iframe id="demo" src="../webgl/D02ProceduralGeometricModeling/graphics_fun.html?start=meshes"
+            tabindex="-1"></iframe>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <a href="mailto:my.email@digipen.edu" class="footer__link">my.email@digipen.edu</a>
+        <a href="mailto:alexsmhong@gmail.com" class="footer__link">alexsmhong@gmail.com</a>
         <ul class="social-list">
             <li class="social-list__item">
-                <a class="social-list__link" href="https://linkedin.com/in/mylinkedinid">
+                <a class="social-list__link" href="https://www.linkedin.com/in/vipa-undefined-a0816b303/"
+                    target="_blank">
                     <i class="fab fa-linkedin"></i>
                 </a>
             </li>
             <li class="social-list__item">
-                <a class="social-list__link" href="https://github.com/mygithubid">
+                <a class="social-list__link" href="https://github.com/vipav1pa" target="_blank">
                     <i class="fab fa-github"></i>
                 </a>
             </li>
-            <!-- Want to list more? search : https://fontawesome.com/v5/search?ic=brands -->
         </ul>
     </footer>
 
