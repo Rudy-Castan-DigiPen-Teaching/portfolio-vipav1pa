@@ -1,15 +1,13 @@
-<!-- https://youtu.be/_xkSvufmjEs?si=mh-MXT2ZdUasYAYn&t=3416 -->
-<!-- adobe.ly/2GAgF93 -->
-<!-- https://scrimba.com/build-and-deploy-your-portfolio-c012 -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/svg+xml" href="../img/face.jpg">
+
     <!-- Help auto scale for desktop & mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STUDENT TODO Website</title>
+    <title>Gradient Noise - Seungmin Hong</title>
 
     <!-- Normalize the difference across browsers  https://necolas.github.io/normalize.css/ -->
     <link rel="stylesheet" href="../external/normalize.css">
@@ -30,8 +28,7 @@
 <body>
     <header>
         <div class="logo">
-            <!-- alt text can be blank since the logo is purely decorative and putting something like logo isn't actually helpful -->
-            <img src="../img/cout.jpg" alt="">
+            <span style="font-weight: bold; font-family: 'Source Code Pro', monospace;">cout >> Seungmin Hong</span>
         </div>
         <button class="nav-toggle" aria-label="toggle navigation">
             <span class="hamburger"></span>
@@ -62,45 +59,53 @@
         <h1 class="section__title section__title--intro">
             Project <strong>Gradient Noise</strong>
         </h1>
-        <p class="section__subtitle section__subtitle--intro">3D Graphics</p>
+        <p class="section__subtitle section__subtitle--intro">Procedural Generation</p>
         <img src="../img/portfolio_thumbnails/07_gradient.jpg" alt="a picture of this portfolio item" class="intro__img">
     </section>
 
     <div class="portfolio-item-individual">
         <h2>Project Overview</h2>
-        <p>Provide a brief description of the project, its purpose, and what you aimed to achieve.</p>
+        <p>
+            The objective of this project was to implement the Improved 3D Perlin Gradient Noise algorithm directly in GLSL to generate seamless procedural textures. The graphics framework was extended to support high-precision texture formats (RGBA32F, R32F) and configurable offscreen framebuffers, enabling the generation of 2D slices of 3D noise patterns and rendering them both as flat textures and displaced 3D surfaces.
+        </p>
 
         <h2>Tasks Completed</h2>
         <ul>
-            <li>Describe the tasks you completed for this project.</li>
-            <li>Be specific about your contributions and the technologies used.</li>
+            <li>Integrated source files for <code>D07GradientNoise</code> and updated <code>CMakeLists.txt</code> to register the demo in <code>DemosFactory</code> under the short name "gradient".</li>
+            <li>Extended the <code>Texture</code> class with a <code>LoadAsFormat</code> function, implementing specialized <code>GL::TexStorage2D</code> memory allocation with runtime branching for WebGL and OpenGL 4.2+ compatibility.</li>
+            <li>Upgraded the <code>Framebuffer</code> class to handle dynamic texture format modifications, allowing the configuration of an <code>R32F</code> offscreen buffer for storing single-channel noise values.</li>
+            <li>Implemented the Improved 3D Perlin Noise algorithm in GLSL (<code>gen_gradient_noise.vert</code>/<code>.frag</code>) using a hardcoded 64-size permutation table, 12 fixed gradient directions, and quintic (5th-degree) smoothing.</li>
+            <li>Programmed 5 distinct procedural noise patterns: Plain Gradient Noise, Fractal Sum, Turbulence, Marble, and Wood, with range remapping from [-1, 1] to [0, 1].</li>
+            <li>Developed visualization shaders: <code>simple.vert</code>/<code>.frag</code> for rendering a 2D texture slice on a quad, and <code>surface.vert</code> for a 3D terrain-like surface using vertex displacement based on the generated noise.</li>
+            <li>Ensured seamless tiling at a scale of 3, wrapped all calls using <code>GL::</code> wrappers, and applied <code>clang-format</code>.</li>
         </ul>
 
         <h2>Reflection</h2>
-        <p>Reflect on the project, discussing any challenges faced, solutions implemented, and what you learned from the
-            experience.</p>
+        <p>
+            Implementing the entire noise generation pipeline into GPU shaders (GLSL) for real-time calculation presented significant technical challenges and insights, especially when contrasted with the previous CPU-bound Value Noise project. Designing flexible texture loading and framebuffer systems that support different color formats like <code>R32F</code> was crucial for optimization and cross-platform WebGL stability. Witnessing pure mathematical formulas and fixed gradient vectors morph into organic, natural-looking patterns like marble and wood felt truly magical. Seeing those noise maps dynamically displace a flat plane mesh into a rolling 3D landscape in real-time provided a profound appreciation for procedural generation and low-level shader engineering.
+        </p>
     </div>
 
     <div class="portfolio-item-individual">
-        <h2>Demo</h2>
-        <iframe id="demo" src="../webgl/D07GradientNoise/graphics_fun.html?start=gradient" tabindex="-1"></iframe>
+        <h2>Live Demo</h2>
+        <iframe id="demo" src="../webgl/D07GradientNoise/graphics_fun.html?start=gradient"></iframe>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <a href="mailto:my.email@digipen.edu" class="footer__link">my.email@digipen.edu</a>
+        <a href="mailto:alexsmhong@gmail.com" class="footer__link">alexsmhong@gmail.com</a>
         <ul class="social-list">
             <li class="social-list__item">
-                <a class="social-list__link" href="https://linkedin.com/in/mylinkedinid">
+                <a class="social-list__link" href="https://www.linkedin.com/in/vipa-undefined-a0816b303/"
+                    target="_blank">
                     <i class="fab fa-linkedin"></i>
                 </a>
             </li>
             <li class="social-list__item">
-                <a class="social-list__link" href="https://github.com/mygithubid">
+                <a class="social-list__link" href="https://github.com/vipav1pa" target="_blank">
                     <i class="fab fa-github"></i>
                 </a>
             </li>
-            <!-- Want to list more? search : https://fontawesome.com/v5/search?ic=brands -->
         </ul>
     </footer>
 
